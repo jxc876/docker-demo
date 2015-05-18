@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>Docker Demo</title>
+		
+		<link rel="stylesheet" href="libs/contextMenu/jquery.contextMenu.css">
+		<link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="libs/wcDocker/wcDocker.css">
+
+	</head>
+	<body>
+	
+	<h1>Docker Demo</h1>
+	
+	<div id="docker"></div>
+	<div id="simple"><h2>Simple Panel!</h2></div>
+	
+	<script src="libs/jquery/jquery.js"></script>
+	<script src="libs/contextMenu/jquery.contextMenu.js"></script>
+	<script src="libs/contextMenu/jquery.ui.position.js"></script>
+	<script src="libs/wcDocker/wcDocker.js"></script>
+
+	<script>
+		$(function(){ 
+			var myDocker = new wcDocker('#docker', {
+				themePath: 'libs/wcDocker/Themes'
+			});
+			
+			myDocker.registerPanelType('SimplePanel', {
+				onCreate : function(myPanel, options){
+					myPanel.layout().addItem('#simple');
+				}
+			});
+			
+			var panel = myDocker.addPanel('SimplePanel', wcDocker.DOCK.LEFT);
+		});
+	</script>
+	
+	</body>
+</html>
